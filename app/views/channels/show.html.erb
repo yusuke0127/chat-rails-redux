@@ -1,1 +1,4 @@
-<h1>Show page</h1>
+<div id="chat_app"></div>
+<% content_for :after_js do %>
+  <%= javascript_pack_tag "chat" %>
+<% end %>
