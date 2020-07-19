@@ -32,9 +32,16 @@ puts "Done creating channels"
 
 puts "Done creating yusuke"
 
-10.times  do
+5.times  do
   @message = Message.new(content: Faker::Movie.quote)
   @message.channel = Channel.first
+  @message.user = @yusuke
+  @message.save!
+end
+
+5.times  do
+  @message = Message.new(content: Faker::Movie.quote)
+  @message.channel = Channel.last
   @message.user = @yusuke
   @message.save!
 end

@@ -7,16 +7,20 @@ import { selectChannel, fetchMessages } from '../actions/index';
 
 class ChannelList extends Component {
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
     if (nextProps.selectedChannel !== this.props.selectedChannel) {
       this.props.fetchMessages(nextProps.selectedChannel);
     }
   }
 
   handleClick = (channel) => {
+    console.log(channel);
     this.props.selectChannel(channel);
   }
 
   renderChannel = (channel) => {
+    // console.log(this.props.selectedChannel);
+    // console.log(`Current channel is ${channel}`);
     return (
       <li
         key={channel}

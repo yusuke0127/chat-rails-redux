@@ -28,6 +28,8 @@ class MessageList extends Component {
   }
 
   render () {
+    // console.log(this.props.messages);
+    // console.log('message list');
     return (
       <div className="channel-container">
         <div className="channel-title">
