@@ -6,6 +6,7 @@ export const CHANNEL_SELECTED = 'CHANNEL_SELECTED';
 const beta_url = 'localhost:3000/api/v1/channels/general/messages';
 
 export function fetchMessages(channel) {
+  console.log(channel)
   const url = `/api/v1/channels/${channel}/messages`;
   const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
 

@@ -4,9 +4,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectChannel, fetchMessages } from '../actions/index';
+import { Link } from 'react-router-dom';
+
 
 class ChannelList extends Component {
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     console.log(nextProps);
     if (nextProps.selectedChannel !== this.props.selectedChannel) {
       this.props.fetchMessages(nextProps.selectedChannel);
@@ -14,8 +16,9 @@ class ChannelList extends Component {
   }
 
   handleClick = (channel) => {
-    console.log(channel);
-    this.props.selectChannel(channel);
+    // console.log(channel);
+    this.props.selectChannel();
+    this.props.fetchMessages(channel);
   }
 
   renderChannel = (channel) => {
@@ -28,7 +31,9 @@ class ChannelList extends Component {
         onClick={() => this.handleClick(channel)}
         role="presentation"
       >
+      <Link to={`/channels/${channel}`}>
         #{channel}
+      </Link>
       </li>
     );
   }
