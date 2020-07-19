@@ -43,8 +43,8 @@ class ChannelList extends Component {
 
 function mapStateToProps(state) {
   return {
-    channels: state.channels,
-    selectedChannel: state.selectedChannel
+    channels: state.channels
+    // selectedChannel: state.selectedChannel
   };
 }
 

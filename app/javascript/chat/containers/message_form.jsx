@@ -46,8 +46,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
-    selectedChannel: state.selectedChannel
+    currentUser: state.currentUser
+    // selectedChannel: state.selectedChannel
   };
 }
 
