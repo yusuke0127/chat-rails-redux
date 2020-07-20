@@ -6,7 +6,6 @@ export const CHANNEL_SELECTED = 'CHANNEL_SELECTED';
 const beta_url = 'localhost:3000/api/v1/channels/general/messages';
 
 export function fetchMessages(channel) {
-  console.log(channel)
   const url = `/api/v1/channels/${channel}/messages`;
   const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
 
@@ -16,15 +15,19 @@ export function fetchMessages(channel) {
   };
 }
 
-export function createMessage(channel, author, content) {
+export function createMessage(channel, content) {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+
   const url = `/api/v1/channels/${channel}/messages`;
-  const body = { author, content }; // ES6 destructuring
-  const promise = fetch(url, { credentials: "same-origin" }, {
+  const body = { content }; // ES6 destructuring
+  const promise = fetch(url,  {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
     },
+    credentials: "same-origin",
     body: JSON.stringify(body)
   }).then(r => r.json());
 
