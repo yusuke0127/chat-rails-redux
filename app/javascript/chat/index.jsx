@@ -10,10 +10,12 @@ import App from './components/app';
 import messagesReducer from './reducers/messages_reducer';
 
 const chatContainer = document.getElementById('chat_app');
+const channels = JSON.parse(chatContainer.dataset.channels).map(c => c.name);
+
 
 const initialState = {
   messages: [],
-  channels: [ 'general', 'react', 'tokyo' ], // TODO: get that from Rails DB.
+  channels: channels, // TODO: get that from Rails DB.
 };
 
 const reducers = combineReducers({

@@ -27,7 +27,14 @@ puts "Done creating channels"
 
 @yusuke = User.create(
   email: "yusuke@gmail.com",
-  password: "123456"
+  password: "123456",
+  nickname: "yusuke"
+)
+
+@rick = User.create(
+  email: "rick@gmail.com",
+  password: "123456",
+  nickname: "father of meme"
 )
 
 puts "Done creating yusuke"
@@ -43,6 +50,20 @@ end
   @message = Message.new(content: Faker::Movie.quote)
   @message.channel = Channel.last
   @message.user = @yusuke
+  @message.save!
+end
+
+5.times  do
+  @message = Message.new(content: Faker::Movie.quote)
+  @message.channel = Channel.first
+  @message.user = @rick
+  @message.save!
+end
+
+5.times  do
+  @message = Message.new(content: Faker::Movie.quote)
+  @message.channel = Channel.last
+  @message.user = @rick
   @message.save!
 end
 

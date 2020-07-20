@@ -6,8 +6,6 @@ export default function(state = null, action) {
       return action.payload;
     }
     case MESSAGE_POSTED: {
-      console.log('inside message posted reducer');
-      console.log(state);
       const copiedState = state.slice(0);
       copiedState.push(action.payload);
       return copiedState;

@@ -5,9 +5,10 @@ class Message < ApplicationRecord
   validates :content, presence: true
 
   def as_json(options = {})
+    nickname = user.nickname.nil? ? user.email : user.nickname
     {
       id: id,
-      author: user.email,
+      author: nickname,
       content: content,
       created_at: created_at,
       channel: channel.name
